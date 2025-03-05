@@ -20,8 +20,8 @@ const Header: React.FC = () => {
         >
           <Shield className="h-8 w-8 text-ctf-light" />
           <div>
-            <h1 className="text-xl font-semibold tracking-tight">AI-Flag Hunter</h1>
-            <p className="text-xs text-muted-foreground">ML Security CTF Challenge</p>
+            <h1 className="text-xl font-semibold tracking-tight">Vânătorul de Flag-uri IA</h1>
+            <p className="text-xs text-muted-foreground">Provocare CTF Securitate ML</p>
           </div>
         </motion.div>
         
@@ -33,15 +33,15 @@ const Header: React.FC = () => {
         >
           <a href="#dashboard" className="flex items-center space-x-1 hover:text-ctf-light transition-colors">
             <Terminal className="h-4 w-4" />
-            <span>Dashboard</span>
+            <span>Tablou de Bord</span>
           </a>
           <a href="#prediction" className="flex items-center space-x-1 hover:text-ctf-light transition-colors">
             <Cpu className="h-4 w-4" />
-            <span>ML Prediction</span>
+            <span>Predicție ML</span>
           </a>
           <a href="#data" className="flex items-center space-x-1 hover:text-ctf-light transition-colors">
             <Shield className="h-4 w-4" />
-            <span>Security Analysis</span>
+            <span>Analiză Securitate</span>
           </a>
         </motion.nav>
       </div>

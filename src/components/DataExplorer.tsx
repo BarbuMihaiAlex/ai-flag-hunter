@@ -37,8 +37,8 @@ const DataExplorer: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.5 }}
       >
-        <h2 className="text-3xl font-bold tracking-tight mb-2">Data Explorer</h2>
-        <p className="text-muted-foreground">Investigate the system data for hidden patterns and anomalies</p>
+        <h2 className="text-3xl font-bold tracking-tight mb-2">Explorator de date</h2>
+        <p className="text-muted-foreground">Investigați datele sistemului pentru tipare ascunse și anomalii</p>
       </motion.div>
 
       <Card>
@@ -47,17 +47,17 @@ const DataExplorer: React.FC = () => {
             <div>
               <CardTitle className="flex items-center">
                 <Database className="mr-2 h-5 w-5 text-ctf-light" />
-                System Data Browser
+                Browser date sistem
               </CardTitle>
               <CardDescription>
-                Explore datasets for suspicious patterns
+                Explorați seturile de date pentru tipare suspecte
               </CardDescription>
             </div>
             
             <div className="relative w-full md:w-64">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Search data..."
+                placeholder="Caută date..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-8"
@@ -69,17 +69,17 @@ const DataExplorer: React.FC = () => {
         <CardContent>
           <Tabs defaultValue="users" className="w-full" onValueChange={setCurrentTab}>
             <TabsList className="grid grid-cols-4 mb-4">
-              <TabsTrigger value="users">User Profiles</TabsTrigger>
-              <TabsTrigger value="models">Model Parameters</TabsTrigger>
-              <TabsTrigger value="stats">Feature Statistics</TabsTrigger>
-              <TabsTrigger value="logs">Security Logs</TabsTrigger>
+              <TabsTrigger value="users">Profiluri utilizatori</TabsTrigger>
+              <TabsTrigger value="models">Parametri model</TabsTrigger>
+              <TabsTrigger value="stats">Statistici caracteristici</TabsTrigger>
+              <TabsTrigger value="logs">Jurnale securitate</TabsTrigger>
             </TabsList>
             
             <TabsContent value="users" className="space-y-4">
               <div className="flex justify-between items-center">
-                <h3 className="font-medium">User Profile Database</h3>
+                <h3 className="font-medium">Bază de date profiluri utilizatori</h3>
                 <div className="text-sm text-muted-foreground">
-                  {filteredUserProfiles.length} results
+                  {filteredUserProfiles.length} rezultate
                 </div>
               </div>
               
@@ -88,10 +88,10 @@ const DataExplorer: React.FC = () => {
                   <thead>
                     <tr className="bg-muted">
                       <th className="px-4 py-2 text-left text-xs font-medium">ID</th>
-                      <th className="px-4 py-2 text-left text-xs font-medium">Name</th>
-                      <th className="px-4 py-2 text-left text-xs font-medium">Age</th>
-                      <th className="px-4 py-2 text-left text-xs font-medium">Interests</th>
-                      <th className="px-4 py-2 text-left text-xs font-medium">Risk Score</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium">Nume</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium">Vârstă</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium">Interese</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium">Scor de risc</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
@@ -125,21 +125,21 @@ const DataExplorer: React.FC = () => {
             <TabsContent value="models">
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-medium mb-2">Linear Regression Model</h3>
+                  <h3 className="font-medium mb-2">Model regresie liniară</h3>
                   <pre className="bg-secondary p-4 rounded-md overflow-x-auto text-xs font-mono">
                     {formatJSON(modelParameters.lr_model)}
                   </pre>
                 </div>
                 
                 <div>
-                  <h3 className="font-medium mb-2">Random Forest Model</h3>
+                  <h3 className="font-medium mb-2">Model pădure aleatorie</h3>
                   <pre className="bg-secondary p-4 rounded-md overflow-x-auto text-xs font-mono">
                     {formatJSON(modelParameters.rf_model)}
                   </pre>
                 </div>
                 
                 <div>
-                  <h3 className="font-medium mb-2">Neural Network Model</h3>
+                  <h3 className="font-medium mb-2">Model rețea neuronală</h3>
                   <pre className="bg-secondary p-4 rounded-md overflow-x-auto text-xs font-mono">
                     {formatJSON(modelParameters.nn_model)}
                   </pre>
@@ -148,17 +148,17 @@ const DataExplorer: React.FC = () => {
             </TabsContent>
             
             <TabsContent value="stats">
-              <h3 className="font-medium mb-4">Feature Statistics</h3>
+              <h3 className="font-medium mb-4">Statistici caracteristici</h3>
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="bg-muted">
-                      <th className="px-4 py-2 text-left text-xs font-medium">Feature</th>
-                      <th className="px-4 py-2 text-left text-xs font-medium">Mean</th>
-                      <th className="px-4 py-2 text-left text-xs font-medium">Std Dev</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium">Caracteristică</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium">Medie</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium">Deviație std</th>
                       <th className="px-4 py-2 text-left text-xs font-medium">Min</th>
                       <th className="px-4 py-2 text-left text-xs font-medium">Max</th>
-                      <th className="px-4 py-2 text-left text-xs font-medium">Anomaly Score</th>
+                      <th className="px-4 py-2 text-left text-xs font-medium">Scor anomalie</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
@@ -183,7 +183,7 @@ const DataExplorer: React.FC = () => {
             </TabsContent>
             
             <TabsContent value="logs">
-              <h3 className="font-medium mb-4">Security Event Logs</h3>
+              <h3 className="font-medium mb-4">Jurnale evenimente securitate</h3>
               <div className="space-y-4">
                 {securityLogs.map((log, idx) => (
                   <div key={idx} className="p-3 border rounded-md hover:bg-muted/20">
@@ -192,16 +192,16 @@ const DataExplorer: React.FC = () => {
                       <div className={`text-xs px-2 py-1 rounded-full ${
                         log.status === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
                       }`}>
-                        {log.status}
+                        {log.status === 'success' ? 'succes' : 'eșec'}
                       </div>
                     </div>
                     <div className="mt-2 text-sm text-muted-foreground">
                       <div>Timestamp: {log.timestamp}</div>
-                      <div>User ID: {log.user_id}</div>
-                      <div>IP Address: {log.ip}</div>
+                      <div>ID Utilizator: {log.user_id}</div>
+                      <div>Adresă IP: {log.ip}</div>
                       {log.ip === "192.168.1.41" && (
                         <div className="mt-1 text-xs bg-yellow-50 p-2 rounded border border-yellow-200">
-                          Note: Multiple suspicious activities from this IP
+                          Notă: Multiple activități suspecte de la acest IP
                         </div>
                       )}
                     </div>

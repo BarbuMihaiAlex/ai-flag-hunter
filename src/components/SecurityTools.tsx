@@ -20,8 +20,8 @@ const SecurityTools: React.FC = () => {
     setDecodedMessage(result);
     
     // Add to command history
-    setCommandOutput(prev => [...prev, `> Attempting to decode with key: ${key}`, 
-      result ? `Decoded: ${result}` : "Decoding failed: Invalid key"]);
+    setCommandOutput(prev => [...prev, `> Încercare de decodare cu cheia: ${key}`, 
+      result ? `Decodat: ${result}` : "Decodare eșuată: Cheie invalidă"]);
   };
   
   // Function to handle command execution
@@ -29,24 +29,24 @@ const SecurityTools: React.FC = () => {
     let output = "";
     
     // Simple command parser for the CTF terminal
-    if (commandInput.toLowerCase() === "help") {
-      output = "Available commands: help, decode [key], analyze, inspect, version";
+    if (commandInput.toLowerCase() === "help" || commandInput.toLowerCase() === "ajutor") {
+      output = "Comenzi disponibile: help/ajutor, decode [cheie], analyze/analizează, inspect/inspectează, version/versiune";
     } else if (commandInput.toLowerCase().startsWith("decode")) {
       const inputKey = commandInput.split(" ")[1];
       if (inputKey) {
         const result = decodeHiddenMessage(inputKey);
-        output = result ? `Decoded message: ${result}` : "Decoding failed: Invalid key";
+        output = result ? `Mesaj decodat: ${result}` : "Decodare eșuată: Cheie invalidă";
       } else {
-        output = "Usage: decode [key]";
+        output = "Utilizare: decode [cheie]";
       }
-    } else if (commandInput.toLowerCase() === "analyze") {
-      output = "Running model analysis...\nVulnerabilities detected in prediction function.\nTry specific input patterns to expose anomalies.";
-    } else if (commandInput.toLowerCase() === "inspect") {
-      output = "Inspecting model parameters...\nSuspicious hex pattern found in activation function.\nUse 'decode' with the right key to reveal hidden data.";
-    } else if (commandInput.toLowerCase() === "version") {
-      output = "AI Flag Hunter v1.0\nCTF Challenge Framework";
+    } else if (commandInput.toLowerCase() === "analyze" || commandInput.toLowerCase() === "analizează") {
+      output = "Rulare analiză model...\nVulnerabilități detectate în funcția de predicție.\nÎncercați tipare specifice de intrare pentru a expune anomalii.";
+    } else if (commandInput.toLowerCase() === "inspect" || commandInput.toLowerCase() === "inspectează") {
+      output = "Inspectare parametri model...\nTipar hex suspect găsit în funcția de activare.\nFolosiți 'decode' cu cheia potrivită pentru a dezvălui date ascunse.";
+    } else if (commandInput.toLowerCase() === "version" || commandInput.toLowerCase() === "versiune") {
+      output = "Vânătorul de Flag-uri IA v1.0\nFramework Provocare CTF";
     } else {
-      output = `Command not recognized: ${commandInput}`;
+      output = `Comandă nerecunoscută: ${commandInput}`;
     }
     
     // Update command history
@@ -67,8 +67,8 @@ const SecurityTools: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.5 }}
       >
-        <h2 className="text-3xl font-bold tracking-tight mb-2">Security Analysis Tools</h2>
-        <p className="text-muted-foreground">Use these tools to analyze the ML system and expose vulnerabilities</p>
+        <h2 className="text-3xl font-bold tracking-tight mb-2">Instrumente de analiză securitate</h2>
+        <p className="text-muted-foreground">Folosiți aceste instrumente pentru a analiza sistemul ML și a expune vulnerabilități</p>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -81,23 +81,23 @@ const SecurityTools: React.FC = () => {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Key className="mr-2 h-5 w-5 text-ctf-light" />
-                Flag Decoder
+                Decodor Flag
               </CardTitle>
               <CardDescription>
-                Use this tool to decode hidden messages when you find the correct key
+                Folosiți acest instrument pentru a decoda mesajele ascunse când găsiți cheia corectă
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Enter Decryption Key:</label>
+                <label className="text-sm font-medium">Introduceți cheia de decriptare:</label>
                 <Input
                   value={key}
                   onChange={(e) => setKey(e.target.value)}
-                  placeholder="e.g., 0x41492d6d6c5f637466"
+                  placeholder="ex., 0x41492d6d6c5f637466"
                   className="font-mono"
                 />
                 <p className="text-xs text-muted-foreground">
-                  Hint: Look for hex-encoded values or suspicious patterns in the model responses
+                  Indiciu: Căutați valori codificate hex sau tipare suspecte în răspunsurile modelului
                 </p>
               </div>
               
@@ -106,12 +106,12 @@ const SecurityTools: React.FC = () => {
                 className="w-full bg-ctf-medium hover:bg-ctf-dark text-white"
               >
                 <Lock className="mr-2 h-4 w-4" />
-                Decode Flag
+                Decodează Flag
               </Button>
               
               {decodedMessage && (
                 <div className="mt-4 p-4 border border-green-200 bg-green-50 rounded-md">
-                  <h3 className="font-medium text-green-800 mb-1">Decoded Message:</h3>
+                  <h3 className="font-medium text-green-800 mb-1">Mesaj decodat:</h3>
                   <p className="font-mono text-sm">{decodedMessage}</p>
                 </div>
               )}
@@ -122,37 +122,37 @@ const SecurityTools: React.FC = () => {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Shield className="mr-2 h-5 w-5 text-ctf-light" />
-                Security Guide
+                Ghid de securitate
               </CardTitle>
               <CardDescription>
-                Tips for finding the hidden flag
+                Sfaturi pentru găsirea flag-ului ascuns
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <h3 className="font-medium">Adversarial Inputs</h3>
+                <h3 className="font-medium">Intrări adversariale</h3>
                 <p className="text-sm text-muted-foreground">
-                  ML models can be vulnerable to specific input patterns. Try to identify inputs that cause the model to behave differently.
+                  Modelele ML pot fi vulnerabile la tipare specifice de intrare. Încercați să identificați intrările care determină modelul să se comporte diferit.
                 </p>
               </div>
               
               <div className="space-y-2">
-                <h3 className="font-medium">Hidden Data</h3>
+                <h3 className="font-medium">Date ascunse</h3>
                 <p className="text-sm text-muted-foreground">
-                  Look for unusual values, patterns, or encoded strings in the model parameters and outputs.
+                  Căutați valori neobișnuite, tipare sau șiruri codificate în parametrii și ieșirile modelului.
                 </p>
               </div>
               
               <div className="space-y-2">
-                <h3 className="font-medium">Anomaly Patterns</h3>
+                <h3 className="font-medium">Tipare anomalii</h3>
                 <p className="text-sm text-muted-foreground">
-                  Pay attention to statistical anomalies and suspicious activities in the security logs.
+                  Acordați atenție anomaliilor statistice și activităților suspecte din jurnalele de securitate.
                 </p>
               </div>
               
               <div className="mt-4 p-3 border border-yellow-200 bg-yellow-50 rounded-md">
                 <p className="text-sm text-yellow-800">
-                  The flag is split into multiple parts. Find all parts and combine them to get the complete flag in the format: AI&#123;hidden_flag_1234&#125;
+                  Flag-ul este împărțit în mai multe părți. Găsiți toate părțile și combinați-le pentru a obține flag-ul complet în formatul: AI&#123;hidden_flag_1234&#125;
                 </p>
               </div>
             </CardContent>
@@ -168,17 +168,17 @@ const SecurityTools: React.FC = () => {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Terminal className="mr-2 h-5 w-5 text-ctf-light" />
-                Security Terminal
+                Terminal securitate
               </CardTitle>
               <CardDescription>
-                Use commands to analyze the system
+                Folosiți comenzi pentru a analiza sistemul
               </CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
               <div className="bg-ctf-dark text-white h-[350px] rounded-md p-4 font-mono text-sm overflow-y-auto">
                 <div className="space-y-1">
-                  <p className="text-green-400">AI Flag Hunter Security Terminal v1.0</p>
-                  <p className="text-green-400">Type 'help' for available commands</p>
+                  <p className="text-green-400">Terminal Securitate Vânătorul de Flag-uri IA v1.0</p>
+                  <p className="text-green-400">Tastați 'help' sau 'ajutor' pentru comenzile disponibile</p>
                   <p className="text-gray-500">-----------------------------------</p>
                   
                   {commandOutput.map((line, idx) => (
@@ -195,7 +195,7 @@ const SecurityTools: React.FC = () => {
                 <Input
                   value={commandInput}
                   onChange={(e) => setCommandInput(e.target.value)}
-                  placeholder="Enter command..."
+                  placeholder="Introduceți comanda..."
                   className="flex-grow font-mono"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' && commandInput.trim() !== '') {

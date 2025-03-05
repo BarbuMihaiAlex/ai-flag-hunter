@@ -62,8 +62,8 @@ const ModelAnalysis: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.5 }}
       >
-        <h2 className="text-3xl font-bold tracking-tight mb-2">Model Analysis</h2>
-        <p className="text-muted-foreground">Examine patterns in model predictions to identify vulnerabilities</p>
+        <h2 className="text-3xl font-bold tracking-tight mb-2">Analiza modelului</h2>
+        <p className="text-muted-foreground">Examinați tiparele din predicțiile modelului pentru a identifica vulnerabilități</p>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -77,16 +77,16 @@ const ModelAnalysis: React.FC = () => {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Cpu className="mr-2 h-5 w-5 text-ctf-light" />
-                Prediction Analysis
+                Analiza predicțiilor
               </CardTitle>
               <CardDescription>
-                Graph of model predictions by input variable
+                Grafic al predicțiilor modelului după variabilă de intrare
               </CardDescription>
             </CardHeader>
             <CardContent>
               {isGenerating ? (
                 <div className="flex items-center justify-center h-[350px]">
-                  <p className="text-muted-foreground">Generating analysis data...</p>
+                  <p className="text-muted-foreground">Generarea datelor de analiză...</p>
                 </div>
               ) : (
                 <div className="h-[350px] w-full">
@@ -96,11 +96,11 @@ const ModelAnalysis: React.FC = () => {
                       margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
-                      <XAxis dataKey="input" label={{ value: 'Age', position: 'insideBottomRight', offset: -5 }} />
-                      <YAxis label={{ value: 'Risk Score', angle: -90, position: 'insideLeft' }} />
+                      <XAxis dataKey="input" label={{ value: 'Vârstă', position: 'insideBottomRight', offset: -5 }} />
+                      <YAxis label={{ value: 'Scor de risc', angle: -90, position: 'insideLeft' }} />
                       <Tooltip 
-                        formatter={(value, name) => [Number(value).toFixed(2), name === 'prediction' ? 'Actual' : 'Expected']}
-                        labelFormatter={(value) => `Age: ${value}`}
+                        formatter={(value, name) => [Number(value).toFixed(2), name === 'prediction' ? 'Actual' : 'Așteptat']}
+                        labelFormatter={(value) => `Vârstă: ${value}`}
                       />
                       <Line
                         type="monotone"
@@ -128,12 +128,12 @@ const ModelAnalysis: React.FC = () => {
                 <div className="mt-4 p-3 border border-yellow-200 bg-yellow-50 rounded-md flex items-start">
                   <AlertTriangle className="h-5 w-5 text-yellow-500 mr-2 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="font-medium text-yellow-800">Anomalies Detected</h3>
+                    <h3 className="font-medium text-yellow-800">Anomalii detectate</h3>
                     <p className="text-sm text-yellow-700 mt-1">
-                      Unusual predictions detected at age inputs: {anomalousInputs.age.join(', ')}
+                      Predicții neobișnuite detectate la intrările de vârstă: {anomalousInputs.age.join(', ')}
                     </p>
                     <p className="text-xs text-yellow-600 mt-1">
-                      Try examining these specific input values in the prediction form to investigate further.
+                      Încercați să examinați aceste valori specifice de intrare în formularul de predicție pentru a investiga mai departe.
                     </p>
                   </div>
                 </div>
@@ -151,56 +151,56 @@ const ModelAnalysis: React.FC = () => {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Search className="mr-2 h-5 w-5 text-ctf-light" />
-                Model Insights
+                Informații model
               </CardTitle>
               <CardDescription>
-                Highlights from model analysis
+                Puncte cheie din analiza modelului
               </CardDescription>
             </CardHeader>
             <CardContent className="flex-grow space-y-4">
               <div className="space-y-2">
-                <h3 className="font-medium">Model Parameters</h3>
+                <h3 className="font-medium">Parametri model</h3>
                 <div className="bg-secondary p-3 rounded-md text-sm">
                   <div className="flex justify-between mb-1">
-                    <span>Weights:</span>
+                    <span>Ponderi:</span>
                     <span className="font-mono">[0.1, 0.2, 0.3, ...]</span>
                   </div>
                   <div className="flex justify-between mb-1">
-                    <span>Bias:</span>
+                    <span>Înclinare:</span>
                     <span className="font-mono">0.41</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Accuracy:</span>
+                    <span>Acuratețe:</span>
                     <span className="font-mono">0.875</span>
                   </div>
                 </div>
               </div>
               
               <div className="space-y-2">
-                <h3 className="font-medium">Suspicious Findings</h3>
+                <h3 className="font-medium">Descoperiri suspecte</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start">
                     <AlertTriangle className="h-4 w-4 text-yellow-500 mr-1 flex-shrink-0 mt-0.5" />
-                    <span>Non-linear response at specific age inputs</span>
+                    <span>Răspuns non-liniar la intrări specifice de vârstă</span>
                   </li>
                   <li className="flex items-start">
                     <AlertTriangle className="h-4 w-4 text-yellow-500 mr-1 flex-shrink-0 mt-0.5" />
-                    <span>Possible backdoor in model activation</span>
+                    <span>Posibilă ușă secretă în activarea modelului</span>
                   </li>
                   <li className="flex items-start">
                     <AlertTriangle className="h-4 w-4 text-yellow-500 mr-1 flex-shrink-0 mt-0.5" />
-                    <span>Encoded data in model parameters</span>
+                    <span>Date codificate în parametrii modelului</span>
                   </li>
                 </ul>
               </div>
               
               <div className="space-y-2">
-                <h3 className="font-medium">Investigation Steps</h3>
+                <h3 className="font-medium">Pași de investigație</h3>
                 <ol className="space-y-2 text-sm list-decimal pl-4">
-                  <li>Test the model with age = 38</li>
-                  <li>Examine response to specific combinations of inputs</li>
-                  <li>Look for hidden fields in API responses</li>
-                  <li>Analyze hex-encoded values in parameters</li>
+                  <li>Testați modelul cu vârsta = 38</li>
+                  <li>Examinați răspunsul la combinații specifice de intrări</li>
+                  <li>Căutați câmpuri ascunse în răspunsurile API</li>
+                  <li>Analizați valorile codificate hex în parametri</li>
                 </ol>
               </div>
               
@@ -209,7 +209,7 @@ const ModelAnalysis: React.FC = () => {
                   onClick={() => window.location.href = '#prediction'} 
                   className="w-full bg-ctf-medium hover:bg-ctf-dark text-white"
                 >
-                  Back to Prediction Form <ArrowRight className="ml-2 h-4 w-4" />
+                  Înapoi la formularul de predicție <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </CardContent>

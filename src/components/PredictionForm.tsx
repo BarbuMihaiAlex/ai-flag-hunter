@@ -61,8 +61,8 @@ const PredictionForm: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.5 }}
       >
-        <h2 className="text-3xl font-bold tracking-tight mb-2">ML Prediction Challenge</h2>
-        <p className="text-muted-foreground">Analyze the model's behavior by submitting different inputs and observe the responses</p>
+        <h2 className="text-3xl font-bold tracking-tight mb-2">Provocare de Predicție ML</h2>
+        <p className="text-muted-foreground">Analizați comportamentul modelului prin trimiterea de diferite intrări și observați răspunsurile</p>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -75,15 +75,15 @@ const PredictionForm: React.FC = () => {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Cpu className="mr-2 h-5 w-5 text-ctf-light" />
-                AI Prediction Form
+                Formular de Predicție IA
               </CardTitle>
               <CardDescription>
-                Try to identify inputs that trigger unusual model behavior
+                Încercați să identificați intrările care declanșează comportamente neobișnuite ale modelului
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="age">Age</Label>
+                <Label htmlFor="age">Vârstă</Label>
                 <div className="flex items-center space-x-4">
                   <Slider
                     id="age"
@@ -99,7 +99,7 @@ const PredictionForm: React.FC = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="interests">Interests Count</Label>
+                <Label htmlFor="interests">Număr de interese</Label>
                 <div className="flex items-center space-x-4">
                   <Slider
                     id="interests"
@@ -115,7 +115,7 @@ const PredictionForm: React.FC = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="login">Login Frequency (per week)</Label>
+                <Label htmlFor="login">Frecvență autentificare (pe săptămână)</Label>
                 <div className="flex items-center space-x-4">
                   <Slider
                     id="login"
@@ -131,7 +131,7 @@ const PredictionForm: React.FC = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="active">Active Hours (per day)</Label>
+                <Label htmlFor="active">Ore active (pe zi)</Label>
                 <div className="flex items-center space-x-4">
                   <Slider
                     id="active"
@@ -148,10 +148,10 @@ const PredictionForm: React.FC = () => {
             </CardContent>
             <CardFooter className="flex justify-between">
               <Button variant="outline" onClick={resetForm}>
-                Reset
+                Resetare
               </Button>
               <Button onClick={handlePredict} className="bg-ctf-medium hover:bg-ctf-dark text-white">
-                Analyze <ArrowRight className="ml-2 h-4 w-4" />
+                Analizează <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardFooter>
           </Card>
@@ -167,21 +167,21 @@ const PredictionForm: React.FC = () => {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Info className="mr-2 h-5 w-5 text-ctf-light" />
-                  Model Analysis Results
+                  Rezultate Analiză Model
                 </CardTitle>
                 <CardDescription>
-                  Examine the outputs for suspicious patterns
+                  Examinați ieșirile pentru tipare suspecte
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-3 bg-secondary rounded-md">
-                    <h3 className="text-xs font-medium text-muted-foreground mb-1">Risk Score</h3>
+                    <h3 className="text-xs font-medium text-muted-foreground mb-1">Scor de risc</h3>
                     <p className="text-2xl font-bold">{prediction}</p>
                   </div>
                   
                   <div className="p-3 bg-secondary rounded-md">
-                    <h3 className="text-xs font-medium text-muted-foreground mb-1">Risk Category</h3>
+                    <h3 className="text-xs font-medium text-muted-foreground mb-1">Categorie de risc</h3>
                     <p className="text-2xl font-bold">{riskClass}</p>
                   </div>
                 </div>
@@ -189,16 +189,16 @@ const PredictionForm: React.FC = () => {
                 {anomalyResult && (
                   <div className="p-4 bg-secondary rounded-md space-y-2">
                     <div className="flex justify-between items-center">
-                      <h3 className="font-medium">Anomaly Detection</h3>
+                      <h3 className="font-medium">Detectare anomalii</h3>
                       {anomalyResult.isAnomaly && (
                         <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full flex items-center">
                           <AlertTriangle className="h-3 w-3 mr-1" />
-                          Anomaly Detected
+                          Anomalie detectată
                         </span>
                       )}
                     </div>
                     <div className="text-sm">
-                      <p><span className="font-medium">Score:</span> {anomalyResult.score}</p>
+                      <p><span className="font-medium">Scor:</span> {anomalyResult.score}</p>
                       <p className="text-xs text-muted-foreground mt-1">{anomalyResult.details}</p>
                     </div>
                   </div>
@@ -206,23 +206,23 @@ const PredictionForm: React.FC = () => {
                 
                 {explanation && (
                   <div className="p-4 bg-secondary rounded-md space-y-2">
-                    <h3 className="font-medium">Feature Contributions</h3>
+                    <h3 className="font-medium">Contribuții caracteristici</h3>
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       {Object.entries(explanation.factors).map(([factor, value]) => (
                         <div key={factor} className="flex justify-between">
                           <span>{factor}:</span>
-                          <span className="font-mono">{value}</span>
+                          <span className="font-mono">{String(value)}</span>
                         </div>
                       ))}
                     </div>
                     <div className="text-xs mt-2">
-                      <span className="font-medium">Dominant factor:</span> {explanation.dominant}
+                      <span className="font-medium">Factor dominant:</span> {explanation.dominant}
                     </div>
                     
                     {/* This will only appear with the right combination of inputs */}
                     {explanation.hidden_info && (
                       <div className="mt-2 font-mono text-xs bg-yellow-50 p-2 rounded border border-yellow-200">
-                        Debug info: {explanation.hidden_info}
+                        Info debug: {explanation.hidden_info}
                       </div>
                     )}
                   </div>
@@ -230,14 +230,14 @@ const PredictionForm: React.FC = () => {
                 
                 {featureImportance && (
                   <div className="p-4 bg-secondary rounded-md space-y-2">
-                    <h3 className="font-medium">Feature Importance</h3>
+                    <h3 className="font-medium">Importanța caracteristicilor</h3>
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       {Object.entries(featureImportance)
                         .filter(([key]) => !key.startsWith('_'))
                         .map(([feature, value]) => (
                           <div key={feature} className="flex justify-between">
                             <span>{feature}:</span>
-                            <span className="font-mono">{value}</span>
+                            <span className="font-mono">{String(value)}</span>
                           </div>
                         ))}
                     </div>
@@ -245,7 +245,7 @@ const PredictionForm: React.FC = () => {
                     {/* This will only appear with the right combination of inputs */}
                     {featureImportance._comment && (
                       <div className="mt-2 font-mono text-xs bg-yellow-50 p-2 rounded border border-yellow-200">
-                        Note: {featureImportance._comment}
+                        Notă: {featureImportance._comment}
                       </div>
                     )}
                   </div>
@@ -256,9 +256,9 @@ const PredictionForm: React.FC = () => {
             <div className="h-full flex items-center justify-center">
               <div className="text-center p-8">
                 <Cpu className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-lg font-medium mb-2">No Predictions Yet</h3>
+                <h3 className="text-lg font-medium mb-2">Nicio predicție încă</h3>
                 <p className="text-sm text-muted-foreground">
-                  Submit the form to see the ML model's predictions and analysis. Try different input combinations to discover vulnerabilities.
+                  Trimiteți formularul pentru a vedea predicțiile modelului ML și analiza. Încercați diferite combinații de intrare pentru a descoperi vulnerabilități.
                 </p>
               </div>
             </div>

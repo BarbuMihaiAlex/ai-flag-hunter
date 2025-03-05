@@ -20,7 +20,7 @@ const Dashboard: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.5 }}
         >
-          AI Flag Hunter Dashboard
+          Tablou de Bord Vânătorul de Flag-uri IA
         </motion.h1>
         <motion.p 
           className="text-muted-foreground text-lg"
@@ -28,7 +28,7 @@ const Dashboard: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          Welcome to the ML Security CTF challenge. Discover vulnerabilities and find the hidden flag.
+          Bine ați venit la provocarea CTF de securitate ML. Descoperiți vulnerabilitățile și găsiți flag-ul ascuns.
         </motion.p>
       </div>
 
@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
       >
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">ML Models</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Modele ML</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
@@ -52,7 +52,7 @@ const Dashboard: React.FC = () => {
         
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">User Profiles</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Profiluri utilizatori</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
@@ -64,7 +64,7 @@ const Dashboard: React.FC = () => {
         
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Security Events</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Evenimente securitate</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
@@ -76,7 +76,7 @@ const Dashboard: React.FC = () => {
         
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Anomaly Score</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Scor anomalie</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
@@ -95,36 +95,36 @@ const Dashboard: React.FC = () => {
       >
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Challenge Instructions</CardTitle>
-            <CardDescription>Find the hidden flag by exploiting vulnerabilities in the ML system</CardDescription>
+            <CardTitle>Instrucțiuni provocare</CardTitle>
+            <CardDescription>Găsiți flag-ul ascuns exploatând vulnerabilitățile din sistemul ML</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <h3 className="font-semibold">Web Application Interaction</h3>
-              <p className="text-sm text-muted-foreground">Interact with the ML Prediction form and explore model behaviors. The flag may be hidden in the model's responses or behaviors.</p>
+              <h3 className="font-semibold">Interacțiunea cu aplicația web</h3>
+              <p className="text-sm text-muted-foreground">Interacționați cu formularul de predicție ML și explorați comportamentele modelului. Flag-ul poate fi ascuns în răspunsurile sau comportamentele modelului.</p>
             </div>
             
             <div className="space-y-2">
-              <h3 className="font-semibold">Data Exploration</h3>
-              <p className="text-sm text-muted-foreground">Analyze the available datasets for anomalies or hidden patterns that might lead to the flag.</p>
+              <h3 className="font-semibold">Explorarea datelor</h3>
+              <p className="text-sm text-muted-foreground">Analizați seturile de date disponibile pentru anomalii sau tipare ascunse care ar putea duce la flag.</p>
             </div>
             
             <div className="space-y-2">
-              <h3 className="font-semibold">Model Analysis & Exploitation</h3>
-              <p className="text-sm text-muted-foreground">Exploit vulnerabilities in the ML models by crafting specific inputs that trigger unusual behavior.</p>
+              <h3 className="font-semibold">Analiză model & exploatare</h3>
+              <p className="text-sm text-muted-foreground">Exploatați vulnerabilitățile din modelele ML prin crearea de intrări specifice care declanșează comportamente neobișnuite.</p>
             </div>
             
             <div className="space-y-2">
-              <h3 className="font-semibold">Flag Format</h3>
-              <p className="text-sm text-muted-foreground">The flag will be in the format AI&#123;hidden_flag_1234&#125;</p>
+              <h3 className="font-semibold">Format flag</h3>
+              <p className="text-sm text-muted-foreground">Flag-ul va fi în formatul AI&#123;hidden_flag_1234&#125;</p>
             </div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Security Logs</CardTitle>
-            <CardDescription>Recent security events</CardDescription>
+            <CardTitle>Jurnale de securitate</CardTitle>
+            <CardDescription>Evenimente recente de securitate</CardDescription>
           </CardHeader>
           <CardContent className="max-h-[250px] overflow-y-auto">
             <ul className="space-y-2 text-sm">
@@ -135,11 +135,11 @@ const Dashboard: React.FC = () => {
                     <span className={`text-xs px-2 py-1 rounded-full ${
                       log.status === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
                     }`}>
-                      {log.status}
+                      {log.status === 'success' ? 'succes' : 'eșec'}
                     </span>
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">
-                    <span>User ID: {log.user_id}</span> • <span>IP: {log.ip}</span>
+                    <span>ID Utilizator: {log.user_id}</span> • <span>IP: {log.ip}</span>
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">{log.timestamp}</div>
                 </li>

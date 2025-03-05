@@ -30,8 +30,8 @@ const Index = () => {
       
       <footer className="border-t py-6 px-4 md:px-8 mt-4">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <div>AI-Flag Hunter CTF Challenge</div>
-          <div className="mt-2 md:mt-0">Designed for web application security analysis</div>
+          <div>Provocare CTF Vânătorul de Flag-uri IA</div>
+          <div className="mt-2 md:mt-0">Conceput pentru analiza securității aplicațiilor web</div>
         </div>
       </footer>
     </motion.div>
